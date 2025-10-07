@@ -1,69 +1,85 @@
-# React + TypeScript + Vite
+# Drinks AI React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Drinks AI React is a web application for discovering and creating cocktail recipes. Users can search for existing drinks by category and ingredient using TheCocktailDB API, or generate entirely new recipes using an AI model via OpenRouter. The application also includes a feature to save favorite recipes, which are stored locally in the browser.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+*   **Recipe Search:** Find cocktail recipes by searching for ingredients and categories.
+*   **AI Recipe Generation:** Enter a text prompt (e.g., "A refreshing drink with gin and cucumber") to generate a unique recipe using AI.
+*   **Detailed Views:** View complete recipe details, including ingredients, measurements, and instructions in a modal window.
+*   **Favorites System:** Add your favorite drinks to a personal list for quick access.
+*   **Persistent Favorites:** Favorite recipes are saved in your browser's local storage.
+*   **Responsive Design:** A clean, responsive interface built with Tailwind CSS.
+*   **Notifications:** Get instant feedback for actions like adding a favorite or form validation errors.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+*   **Framework:** React
+*   **Language:** TypeScript
+*   **Build Tool:** Vite
+*   **Styling:** Tailwind CSS & Headless UI
+*   **State Management:** Zustand
+*   **Routing:** React Router
+*   **API Communication:** Axios
+*   **AI Integration:** OpenRouter AI SDK
+*   **Schema Validation:** Zod
+*   **Markdown Rendering:** React Markdown
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Follow these instructions to get a local copy of the project up and running.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Prerequisites
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+*   Node.js (v18 or later)
+*   npm
+*   An API Key from [OpenRouter](https://openrouter.ai/) for the AI generation feature.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Installation
+
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/hfelices92/drinks-ai-react.git
+    cd drinks-ai-react
+    ```
+
+2.  **Install dependencies:**
+    ```sh
+    npm install
+    ```
+
+3.  **Set up environment variables:**
+    Create a `.env.local` file in the root of the project and add your OpenRouter API key.
+
+    ```
+    VITE_OPENROUTER_API_KEY='your-openrouter-api-key'
+    ```
+
+4.  **Run the development server:**
+    ```sh
+    npm run dev
+    ```
+    The application will be available at `http://localhost:5173`.
+
+## Available Scripts
+
+In the project directory, you can run:
+
+*   `npm run dev`: Runs the app in development mode with hot-reloading.
+*   `npm run build`: Builds the app for production to the `dist` folder.
+*   `npm run lint`: Lints the project files using ESLint.
+*   `npm run preview`: Serves the production build locally to preview it.
+
+## Project Structure
+
+The `src` directory is organized as follows:
+
+*   **`components/`**: Contains reusable UI components like `DrinkCard`, `Header`, and `Modal`.
+*   **`layouts/`**: The main application layout component.
+*   **`lib/`**: Configuration files for third-party libraries, such as the AI SDK.
+*   **`schemas/`**: Zod schemas for validating API responses.
+*   **`services/`**: Modules for interacting with external APIs (TheCocktailDB and OpenRouter).
+*   **`stores/`**: Zustand state management slices for different application features (recipes, favorites, AI, notifications).
+*   **`types/`**: TypeScript type definitions inferred from the Zod schemas.
+*   **`views/`**: Top-level components for each page/route (`IndexPage`, `FavoritesPage`, etc.).
